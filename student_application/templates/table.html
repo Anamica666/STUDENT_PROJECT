@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Table</title>
+</head>
+<body>
+    <h2>Student_Table</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Class</th>
+                <th>Tamil Marks</th>
+                <th>English Marks</th>
+                <th>Science Marks</th>
+                <th>Maths Marks</th>
+                <th>Social Marks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in  Student_Table %}
+            <tr>
+                <td>{{ student[1] }}</td>
+                <td>{{ student[2] }}</td>
+                <td>{{ student[3] }}</td>
+                <td>{{ student[4] }}</td>
+                <td>{{ student[5] }}</td>
+                <td>{{ student[6] }}</td>
+                <td>{{ student[7] }}</td>
+                <td>{{ student[8] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

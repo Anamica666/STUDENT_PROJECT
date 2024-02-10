@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>Registration Form</h1>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            color: brown;
+            font-size: 50px;
+        }
+
+        div {
+            margin:0 auto;
+            width: 50%;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+ <div> 
+    <form id="Form" action="#" method="post">
+        <label for="Firstname">Firstname:</label><br>
+        <input type="text" id="first_name" name="first_name" required>
+        <br><br>
+
+        <label for="Lastname">Lastname:</label><br>
+        <input type="text" id="last_name" name="last_name" required>
+        <br><br>
+
+        <label for="username">UserName:</label><br>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+    
+        <form onsubmit="hashPassword()">
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required>
+            <br><br>
+            <button type="submit" class="btn btn-primary">Signup</button>
+
+
+
+ </div> 
+ <script>
+    const thisForm = document.getElementById('Form');
+    thisForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        let response = await fetch('http://127.0.0.1:8000/save_register_page/', {
+            method: 'POST',
+            body: new FormData(thisForm)
+        });
+        let result = await response.json();
+        alert(result.message);
+        console.log(result);
+        
+    });
+</script>  
+</body>
+</html>

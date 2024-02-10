@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>Application loginForm</h1>
+    <style>
+        body {
+        
+            text-align: center;
+        }
+
+        h1 {
+            color: brown;
+            font-size: 50px;
+        }
+
+        div {
+            margin:0 auto;
+            width: 50%;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+ <div> 
+    <form id="loginForm" action="#" method="post">
+        <label for="username">username:</label><br>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+    
+        <label for="password">password:</label><br>
+        <input type="text" id="password" name="password" required>
+        <br><br>
+        <button type="submit" class="btn btn-primary">Login</button>
+       
+</div>  
+ <script>
+    const thisForm = document.getElementById('loginForm');
+    thisForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        let response = await fetch('http://127.0.0.1:8000/UserLogin/', {
+            method: 'POST',
+            body: new FormData(thisForm)
+        });
+        console.log(response)
+        let result = await response.json();
+        console.log(result)
+        alert(result.message);
+        console.log(result);
+        // Redirect to index.html
+        if (result === 'success'){
+            window.location.href = 'index.html';
+
+        }
+        else{
+            window.location.href = 'register.html';
+        }
+
+        
+
+    });
+</script>  
+</body>
+</html>

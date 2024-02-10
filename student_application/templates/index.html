@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h3> Sunbeam Matriculation School</h3>
+    <title>Student-Document</title>
+    <style>
+        body {
+            text-align: center;
+            color:blueviolet
+        }
+
+        h3 {
+            color: brown;
+            font-size: 50px;
+        }
+
+        div {
+            margin:0 auto;
+            width: 50%;
+            text-align: left;
+            
+        }
+    </style>
+</head>
+<body>
+    <h4>Student Application</h4>
+
+    <div>
+        <form id="registrationForm" action="http://127.0.0.1:8000/Save_Student_Info/" method="post">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required>
+            <br><br>
+
+            <label for="age">Age:</label><br>
+            <input type="number" id="age" name="age" required>
+            <br><br>
+
+            <label for="student_class">Student_class:</label><br>
+            <select id="student_class" name="student_class">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <br><br>
+
+            <label for="tamilmarks">tamilmarks:</label><br>
+            <input type="number" id="tamilmarks" name="tamilmarks" required max="100">
+            <br><br>
+            
+
+            <label for="englishmarks">englishmarks:</label><br>
+            <input type="number" id="englishmarks" name="englishmarks" required max="100">
+            <br><br>
+
+            <label for="sciencemarks">sciencemarks:</label><br>
+            <input type="number" id="sciencemarks" name="sciencemarks" required max="100">
+            <br><br>
+
+            <label for="mathsmarks">mathsmarks:</label><br>
+            <input type="number" id="mathsmarks" name="mathsmarks" required max="100">
+            <br><br>
+
+            <label for="socialmarks">socialmarks:</label><br>
+            <input type="number" id="socialmarks" name="socialmarks" required max="100">
+            <br><br>
+
+            <button type="submit" class="btn btn-primary">Submit</button><br>
+            <button type="button" onclick="window.location.href='table.html'" class="btn btn-primary">View Student</button>
+            
+        </form>
+    </div>
+    
+    <script>
+        const thisForm = document.getElementById('registrationForm');
+        thisForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            let response = await fetch('http://127.0.0.1:8000/Save_Student_Info/', {
+                method: 'POST',
+                body: new FormData(thisForm)
+            });
+            let result = await response.json();
+            alert(result.message);
+            console.log(result);
+
+        });
+    </script>
+</body>
+</html>
